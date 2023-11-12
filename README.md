@@ -1,5 +1,7 @@
 ## ステップ1/テーブル設計
 
+![ER図](internet_tv.pu)
+
 テーブル: チャンネル/channels
 |カラム名|データ型|NULL|キー|初期値|AUTO INCREMENT|
 |-|-|-|-|-|-|

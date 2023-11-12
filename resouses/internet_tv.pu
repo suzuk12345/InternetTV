@@ -1,0 +1,60 @@
+@startuml internet_tv
+
+hide circle
+skinparam linetype ortho
+
+entity "channels" as c {
+    *id <<PK>>
+    --
+    name <<UK>>
+}
+
+entity "time_slots" as t {
+    *id <<PK>>
+    --
+    channel_id <<FK>>
+    episode_id <<FK>>
+    strat_at
+    end_at
+    num_of_views
+}
+
+entity "episodes" as e {
+    *id <<PK>>
+    --
+    program_id <<FK>>
+    season
+    episode_num
+    episode_title
+    episode_desc
+    duration
+    release_on
+}
+
+entity "genres" as g {
+    *id <<PK>>
+    --
+    name <<UK>>
+}
+
+entity "program_genres" as pg {
+    *id <<PK>>
+    --
+    program_id <<FK>>
+    genre_id <<FK>>
+}
+
+entity "programs" as p {
+    *id <<PK>>
+    --
+    program_title
+    program_desc
+}
+
+c ||-r-|{ t
+e }o-d-|| p
+e |o-l-|{ t
+p ||-l-|{ pg
+pg }|-l-|| g
+
+@enduml
