@@ -265,14 +265,14 @@ SELECT t.start_at AS '放送開始時刻',
 SELECT pttn.pt AS '番組タイトル',
        SUM(pttn.tn) AS '番組ごとの視聴数'
   FROM (SELECT p.program_title AS pt,
-               SUM(t.num_of_views) AS tn
-	      FROM time_slots AS t
-	           INNER JOIN episodes AS e
+	       SUM(t.num_of_views) AS tn
+	  FROM time_slots AS t
+	       INNER JOIN episodes AS e
                ON t.episode_id = e.id
                INNER JOIN programs AS p
                ON e.program_id = p.id
-	      WHERE t.start_at > ('2023-11-10 00:00:00' - INTERVAL 1 WEEK)
-	      GROUP BY t.episode_id) AS pttn
+	 WHERE t.start_at > ('2023-11-10 00:00:00' - INTERVAL 1 WEEK)
+	 GROUP BY t.episode_id) AS pttn
  GROUP BY pttn.pt
  ORDER BY SUM(pttn.tn) DESC
  LIMIT 2
@@ -314,13 +314,13 @@ SELECT g.name AS "ジャンル名", pt AS "番組タイトル",
        ON ap.pi = pg.program_id
        INNER JOIN genres AS g
        ON pg.genre_id = g.id
-WHERE atn = (SELECT MAX(atn)
-               FROM avg_program AS ap2
-                    INNER JOIN program_genres AS pg2
-                    ON ap2.pi = pg2.program_id
-			     INNER JOIN genres AS g2
-                    ON pg2.genre_id = g2.id
-              WHERE g.name = g2.name)
+ WHERE atn = (SELECT MAX(atn)
+                FROM avg_program AS ap2
+                     INNER JOIN program_genres AS pg2
+                     ON ap2.pi = pg2.program_id
+		     INNER JOIN genres AS g2
+                     ON pg2.genre_id = g2.id
+               WHERE g.name = g2.name)
 ;
 ```
 
