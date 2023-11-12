@@ -312,13 +312,13 @@ SELECT g.name AS "ジャンル名", pt AS "番組タイトル",
        ON ap.pi = pg.program_id
        INNER JOIN genres AS g
        ON pg.genre_id = g.id
-WHERE atn = (SELECT MAX(atn)
-               FROM avg_program AS ap2
-                    INNER JOIN program_genres AS pg2
-                    ON ap2.pi = pg2.program_id
+ WHERE atn = (SELECT MAX(atn)
+                FROM avg_program AS ap2
+                     INNER JOIN program_genres AS pg2
+                     ON ap2.pi = pg2.program_id
 			     INNER JOIN genres AS g2
-                    ON pg2.genre_id = g2.id
-              WHERE g.name = g2.name)
+                     ON pg2.genre_id = g2.id
+               WHERE g.name = g2.name)
 ;
 ```
 
