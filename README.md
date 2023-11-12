@@ -1,6 +1,6 @@
 ## ステップ1/テーブル設計
 
-![ER図](internet_tv.pu)
+![ER図](resouses/internet_tv.pu)
 
 テーブル: チャンネル/channels
 |カラム名|データ型|NULL|キー|初期値|AUTO INCREMENT|
@@ -113,7 +113,7 @@ CREATE TABLE time_slots (
 
 ### サンプルデータ
 
-[サンプルデータ](sampledata.sql)
+[サンプルデータ](resouses/sampledata.sql)
 
 ## ステップ3/クエリ
 
